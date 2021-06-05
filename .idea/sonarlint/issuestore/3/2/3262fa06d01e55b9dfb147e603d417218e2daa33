@@ -1,0 +1,51 @@
+
+e
+java:S2095S"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÿ®¦±
+k
+java:S2095ˆ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÜõÐºùÿÿÿÿ
+k
+java:S2095“"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†Ö÷€øÿÿÿÿ
+j
+java:S2095%"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(•ÀÆÛýÿÿÿÿ
+e
+java:S2095<"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Žìü
+j
+java:S2095i"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÙÓÐÅÿÿÿÿÿ
+f
+java:S2095¨"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÙÒô¬
+f
+java:S2095Ç"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¹óŒù
+b
+java:S2095~"GUse try-with-resources or close this "Statement" in a "finally" clause.(‡²€·ýÿÿÿÿ
+k
+java:S2095À"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ï§°Âøÿÿÿÿ
+e
+java:S2095ž"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(þ”æ:
+`	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èÊãÎþÿÿÿÿ
+|
+java:S1488¯"`Immediately return this expression instead of assigning it to the temporary variable "magazine".(Éš‚šÿÿÿÿÿ
+¤
+java:S1186ç"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(©¤„Íýÿÿÿÿ8Ô‚Œœ/
+x
+java:S3008"]Rename this field "FIND_ALL_MAGAZINES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Åû˜¨úÿÿÿÿ
+p
+java:S3008"URename this field "FIND_BY_ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÓ‚¯ùÿÿÿÿ
+v
+java:S3008"[Rename this field "FIND_BY_CATEGORY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ìª¥ñýÿÿÿÿ
+|
+java:S3008"aRename this field "FIND_BY_CATEGORY_PRICE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÎž÷ýÿÿÿÿ
+t
+java:S3008"YRename this field "ORDER_BY_PRICE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßìŠÒûÿÿÿÿ
+t
+java:S3008"YRename this field "SEARCH_BY_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÁÁœûÿÿÿÿ
+h
+java:S3008"SRename this field "FIND_ALL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œú×s
+x
+java:S3008"]Rename this field "GET_MAGAZINE_PRICE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ã¶Øùÿÿÿÿ
+q	java:S116"WRename this field "ADD_MAGAZINE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½óÈýÿÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(½óÈýÿÿÿÿÿ
+W	java:S125Î"<This block of commented-out lines of code should be removed.(µîîæýÿÿÿÿ
+G
+java:S1481‚"+Remove this unused "result" local variable.(‰¦”Áùÿÿÿÿ

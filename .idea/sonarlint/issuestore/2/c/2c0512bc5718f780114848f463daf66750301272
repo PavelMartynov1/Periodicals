@@ -1,0 +1,15 @@
+
+e
+java:S2095:"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ˆ”…ú
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èÊãÎşÿÿÿÿ
+G
+java:S1128	"1Remove this unused import 'java.math.BigDecimal'.(êêŠ
+n
+java:S3008"YRename this field "CREATE_PAYMENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾¿š@
+f	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èú¹
+A
+java:S1168""+Return an empty collection instead of null.(¥¹ï
+]
+java:S18548";Remove this useless assignment to local variable "userDao".(Ş€ñ–ûÿÿÿÿ8åŠÀŒœ/
+N
+java:S14818",Remove this unused "userDao" local variable.(Ş€ñ–ûÿÿÿÿ8îŠÀŒœ/

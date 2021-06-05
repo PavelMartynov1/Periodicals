@@ -1,0 +1,10 @@
+
+a
+java:S1192"FDefine a constant instead of duplicating this literal "users" 3 times.(„²Å£øÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(œÀªƒøÿÿÿÿ
+e
+java:S1128"JRemove this unused import 'com.example.Periodicals.Controller.Controller'.(¦¬Þæúÿÿÿÿ
+l
+java:S3008"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›úìÕüÿÿÿÿ
+U
+java:S2441<":Make "User" serializable or don't store it in the session.(›Õ´Ñúÿÿÿÿ

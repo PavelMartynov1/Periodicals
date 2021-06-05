@@ -1,0 +1,5 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(œÀªƒøÿÿÿÿ
+f	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³àþ¢
+I
+java:S3416"3Update this logger to use "SubscribeCommand.class".(³àþ¢

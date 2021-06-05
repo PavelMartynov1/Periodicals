@@ -1,0 +1,12 @@
+
+j
+java:S2095;"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ã“©Æùÿÿÿÿ
+e
+java:S2095T"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(“š™â
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÜõÐºùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èÊãÎþÿÿÿÿ
+g
+java:S3008"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿš…¹
+@
+java:S1068"*Remove this unused "LOGGER" private field.(ÿš…¹

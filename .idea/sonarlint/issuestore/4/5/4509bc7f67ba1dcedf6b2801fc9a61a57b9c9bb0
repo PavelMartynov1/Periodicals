@@ -1,0 +1,7 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¢šìò
+_
+java:S1128"JRemove this unused import 'com.example.Periodicals.model.entity.Magazine'.(ƒ‘“
+l
+java:S3008"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œİÓÿÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(†µ§°

@@ -1,0 +1,30 @@
+
+j
+java:S2095F"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÃşÈ“ùÿÿÿÿ
+e
+java:S2095g"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¹©‹Ğ
+f
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä´òÀ
+f	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹·¬¢
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èÊãÎşÿÿÿÿ
+n
+java:S2259_"L"NullPointerException" will be thrown when invoking method "itIsPossible()".(¾‡ÙÎúÿÿÿÿ8¡Äœ/
+f	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³àş¢
+h	java:S116"SRename this field "FIND_SUB" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è¡©î
+s	java:S116"YRename this field "SUBSCRIBE_USER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ËÁ‡Åûÿÿÿÿ
+s	java:S116"YRename this field "FIND_USER_SUBS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ö·Ãøÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(è¡©î
+<
+java:S1170"!Make this final field static too.(ËÁ‡Åûÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(‚Ö·Ãøÿÿÿÿ
+A
+java:S1168+"+Return an empty collection instead of null.(¥¹ï
+]	java:S125X"<This block of commented-out lines of code should be removed.(‘º×ûÿÿÿÿ8Ÿê¼œ/
+W
+java:S1126ª"AReplace this if-then-else statement by a single return statement.(ÑÏŠO
+E
+java:S2200ª"/Only the sign of the result should be examined.(ÑÏŠO
+X
+java:S1144š"5Remove this unused private "getMagazinePrice" method.(Óãµøÿÿÿÿ8®ê¼œ/
