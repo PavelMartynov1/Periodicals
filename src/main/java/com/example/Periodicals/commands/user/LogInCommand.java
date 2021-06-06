@@ -57,7 +57,7 @@ public class LogInCommand implements Command {
 
     private String validate(HttpServletRequest request, RegInput input) {
 
-        String page = null;
+        String page ;
         Optional<User> user = userService.findUser(input);
         if (user.isPresent()) {
             if (userService.checkPassword(user.get(), input.getFirstPassword())) {

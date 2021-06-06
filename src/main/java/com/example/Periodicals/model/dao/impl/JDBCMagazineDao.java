@@ -56,10 +56,9 @@ public class JDBCMagazineDao implements MagazineDao {
             }
         } catch (SQLException e) {
             LOGGER.debug(e.getMessage(), e);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
-
         return list;
     }
 
@@ -80,7 +79,7 @@ public class JDBCMagazineDao implements MagazineDao {
         } catch (SQLException e) {
             LOGGER.debug(e.getMessage());
             throw new RuntimeException(e);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return list;
@@ -102,7 +101,7 @@ public class JDBCMagazineDao implements MagazineDao {
 
         } catch (SQLException e) {
             LOGGER.debug(e);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return list;
@@ -124,7 +123,7 @@ public class JDBCMagazineDao implements MagazineDao {
             }
         } catch (SQLException e) {
             LOGGER.debug(e);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return list;
@@ -144,7 +143,7 @@ public class JDBCMagazineDao implements MagazineDao {
             }
         } catch (SQLException e) {
             LOGGER.error(e);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return counter;
@@ -167,7 +166,7 @@ public class JDBCMagazineDao implements MagazineDao {
             }
         } catch (SQLException e) {
             LOGGER.error(e);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return counter;
@@ -191,7 +190,7 @@ public class JDBCMagazineDao implements MagazineDao {
         } catch (SQLException e) {
             LOGGER.error(e);
             throw new NoMagazineWasFound(e.getMessage(), e, periodicalId);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return price;
@@ -285,7 +284,7 @@ public class JDBCMagazineDao implements MagazineDao {
             }
         } catch (SQLException e) {
             LOGGER.info("magazine with id " + id + " was not found", e);
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return Optional.ofNullable(magazine);
@@ -306,31 +305,12 @@ public class JDBCMagazineDao implements MagazineDao {
             }
 
         } catch (SQLException e) {
-            LOGGER.error("Unnable to find magazines", e);
-        } finally {
+            LOGGER.error("Unable to find magazines", e);
+        }finally {
             DBManager.closeConnection(connection);
         }
 
         return list;
-    }
-
-    public Magazine buildMagazine(ResultSet rs) throws SQLException {
-
-        return new Magazine.Builder().setId(rs.getLong("magazine_id"))
-                .setName(rs.getString("name"))
-                .setDescription(rs.getString("description"))
-                .setCategory(buildCategory(rs))
-                .setPrice(rs.getBigDecimal("price"))
-                .setPublisher(rs.getString("publisher")).build();
-
-    }
-
-    private Category buildCategory(ResultSet rs) throws SQLException {
-        Category category = new Category();
-        category.setId(rs.getInt("category_id"));
-        category.setName(rs.getString("category_name"));
-        category.setDescription(rs.getString("category_description"));
-        return category;
     }
 
     @Override
@@ -355,7 +335,7 @@ public class JDBCMagazineDao implements MagazineDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return magazine;
@@ -378,8 +358,8 @@ public class JDBCMagazineDao implements MagazineDao {
             updatedMagazine = magazine;
         } catch (SQLException e) {
             LOGGER.error(e);
-        } finally {
-            DBManager.closeConnection(con);
+        }finally {
+            DBManager.closeConnection(connection);
         }
         return updatedMagazine;
     }
@@ -407,8 +387,29 @@ public class JDBCMagazineDao implements MagazineDao {
         } catch (SQLException e) {
             LOGGER.error(e);
             DBManager.rollback(connection);
+        }finally {
+            DBManager.closeConnection(connection);
         }
         return deletedMagazine;
     }
 
+
+    public Magazine buildMagazine(ResultSet rs) throws SQLException {
+
+        return new Magazine.Builder().setId(rs.getLong("magazine_id"))
+                .setName(rs.getString("name"))
+                .setDescription(rs.getString("description"))
+                .setCategory(buildCategory(rs))
+                .setPrice(rs.getBigDecimal("price"))
+                .setPublisher(rs.getString("publisher")).build();
+
+    }
+
+    private Category buildCategory(ResultSet rs) throws SQLException {
+        Category category = new Category();
+        category.setId(rs.getInt("category_id"));
+        category.setName(rs.getString("category_name"));
+        category.setDescription(rs.getString("category_description"));
+        return category;
+    }
 }

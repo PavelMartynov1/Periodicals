@@ -57,21 +57,6 @@ public class JDBCUserDao implements UserDao {
         return user;
     }
 
-    private User buildUser(ResultSet rs) throws SQLException {
-        User user = new User();
-        user.setId(rs.getLong("user_id"));
-        user.setEmail(rs.getString("email"));
-        user.setPassword(rs.getString("password"));
-        user.setRole(getRole(rs.getInt("role_id")));
-        user.setGender(Gender.valueOf(rs.getString("gender")));
-        user.setFirstName(rs.getString("first_name"));
-        user.setLastName(rs.getString("last_name"));
-        user.setSingInDate(LocalDate.now());
-        user.setBalance(rs.getBigDecimal("balance"));
-        user.setStatus(Status.valueOf(rs.getString("status").toUpperCase(Locale.ROOT)));
-        return user;
-    }
-
     private Role getRole(int role_id) {
         if (role_id == 1) {
             return Role.USER;
@@ -307,5 +292,22 @@ public class JDBCUserDao implements UserDao {
                 e.printStackTrace();
             }
         }
+    }
+
+
+
+    private User buildUser(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setId(rs.getLong("user_id"));
+        user.setEmail(rs.getString("email"));
+        user.setPassword(rs.getString("password"));
+        user.setRole(getRole(rs.getInt("role_id")));
+        user.setGender(Gender.valueOf(rs.getString("gender")));
+        user.setFirstName(rs.getString("first_name"));
+        user.setLastName(rs.getString("last_name"));
+        user.setSingInDate(LocalDate.now());
+        user.setBalance(rs.getBigDecimal("balance"));
+        user.setStatus(Status.valueOf(rs.getString("status").toUpperCase(Locale.ROOT)));
+        return user;
     }
 }

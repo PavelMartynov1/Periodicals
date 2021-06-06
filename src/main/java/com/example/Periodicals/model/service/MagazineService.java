@@ -1,14 +1,12 @@
 package com.example.Periodicals.model.service;
 
 import com.example.Periodicals.Controller.dto.MagazineCreationInput;
-import com.example.Periodicals.model.dao.DBManager;
 import com.example.Periodicals.model.dao.DaoFactory;
 import com.example.Periodicals.model.dao.MagazineDao;
 import com.example.Periodicals.model.entity.Magazine;
 import com.example.Periodicals.model.entity.MagazineSearchParameters;
 import com.example.Periodicals.model.entity.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 import java.math.BigDecimal;
 import java.util.List;

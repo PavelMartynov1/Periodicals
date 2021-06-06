@@ -109,7 +109,7 @@ public class JDBCSubscriptionDao implements SubscriptionDao {
                     connection.commit();
                     connection.setAutoCommit(true);
                 } catch (SQLException e) {
-                   LOGGER.log(Level.ERROR,e);
+                    LOGGER.log(Level.ERROR,e);
                     DBManager.rollback(connection);
                 }
                 finally {
@@ -131,6 +131,8 @@ public class JDBCSubscriptionDao implements SubscriptionDao {
             userBalance = userDao.getBalance(user);
         } catch (NoSuchUser e) {
             LOGGER.log(Level.ERROR,e);
+        }finally {
+            DBManager.closeConnection(connection);
         }
         return userBalance;
     }
@@ -180,9 +182,4 @@ public class JDBCSubscriptionDao implements SubscriptionDao {
         return payment;
     }
 
-
-    @Override
-    public void close() throws Exception {
-        DBManager.closeConnection(connection);
-    }
 }

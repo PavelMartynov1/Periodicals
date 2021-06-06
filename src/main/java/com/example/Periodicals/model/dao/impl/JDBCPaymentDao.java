@@ -72,4 +72,5 @@ public class JDBCPaymentDao implements PaymentDao {
     public void finish(){
         DBManager.closeConnection(connection);
     }
+
 }

@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class SubscribeCommand implements Command {
@@ -32,23 +33,25 @@ public class SubscribeCommand implements Command {
         Long id= Long.valueOf(request.getParameter("id"));
         SubscriptionService service=new SubscriptionService();
 
-        if(!service.checkUserSubscription(user,id)){
-            try {
-                Optional<Subscription> subscription = service.subscribeUser(user, id);
-                if (subscription.isPresent()) {
-                    user.getSubs().add(subscription.get());
-                    LOGGER.info("subscribed");
+
+            if(!service.checkUserSubscription(user,id)){
+                try {
+                    Optional<Subscription> subscription = service.subscribeUser(user, id);
+                    if (subscription.isPresent()) {
+                        user.getSubs().add(subscription.get());
+                        LOGGER.info("subscribed");
+                    }
+                } catch(NotEnoughFunds e ){
+                    request.setAttribute("notEnoughFunds",e);
+                    return "/WEB-INF/jsp/subscribe.jsp";
                 }
-            } catch(NotEnoughFunds e ){
-                request.setAttribute("notEnoughFunds",e);
+            }else{
+                LOGGER.info("already subscribed");
+                request.setAttribute("alreadySubscribed",true);
                 return "/WEB-INF/jsp/subscribe.jsp";
-            }
-        }else{
-            LOGGER.info("already subscribed");
-            request.setAttribute("alreadySubscribed",true);
-            return "/WEB-INF/jsp/subscribe.jsp";
+
         }
-    return "redirect:/getUserCabinet";
+        return "redirect:/getUserCabinet";
 
     }
 }

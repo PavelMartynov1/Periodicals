@@ -13,13 +13,16 @@ import com.example.Periodicals.model.entity.User;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class UserService {
+    private Connection connection;
     private static final Logger LOGGER = LogManager.getLogger();
 
     private DaoFactory factory;
@@ -27,61 +30,79 @@ public class UserService {
     public UserService() {
         this.factory = DaoFactory.getInstance();
     }
-    public boolean setUserStatus(Status status,long user_id){
+
+    public boolean setUserStatus(Status status, long user_id) {
+        boolean res = false;
+
         UserDao userdao = factory.createUserDao();
         userdao.start();
-        return userdao.setStatus(status,user_id);
+        res = userdao.setStatus(status, user_id);
+        userdao.finish();
+        return res;
 
     }
+
     public List<User> findByMail(String mail) {
+        List<User> list;
+
         UserDao userdao = factory.createUserDao();
-        boolean status=userdao.start();
-        userdao.finish();
-        return userdao.searchByMail(mail);
-    }
-    public User findById(long user_id){
-        UserDao userdao = factory.createUserDao();
+
         userdao.start();
-        Optional<User> user;
-        user=userdao.find(user_id);
+        list = userdao.searchByMail(mail);
         userdao.finish();
-        if(user.isPresent()){
-            return  user.get();
+        return list;
+    }
+
+    public User findById(long user_id) {
+        Optional<User> user;
+
+        UserDao userdao = factory.createUserDao();
+
+
+        userdao.start();
+        user = userdao.find(user_id);
+        userdao.finish();
+
+        if (user.isPresent()) {
+            return user.get();
         } else {
-            throw new NoSuchUser("no user with id "+user_id);
+            throw new NoSuchUser("no user with id " + user_id);
         }
     }
+
     public boolean addMoney(PaymentInput payment) {
         Connection connection = null;
         try {
             connection = DBManager.getConnection();
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR,e);
+            LOGGER.log(Level.ERROR, e);
         }
+        boolean result;
         UserDao userdao = factory.createUserDao(connection);
-        boolean result = userdao.addMoney(payment);
+        result = userdao.addMoney(payment);
         userdao.finish();
         return result;
     }
 
+
+
     public Optional<User> findUser(RegInput input) {
-        Connection connection = null;
-        try {
-            connection = DBManager.getConnection();
-        } catch (SQLException e) {
-            LOGGER.log(Level.ERROR,e);
-        }
-        UserDao userdao = factory.createUserDao(connection);
-        Optional<User> result = userdao.findByEmail(input.getEmail());
+
+        Optional<User> result;
+
+        UserDao userdao = factory.createUserDao();
+        userdao.start();
+        result = userdao.findByEmail(input.getEmail());
         userdao.finish();
         return result;
 
     }
 
     public List<User> findAll() {
+        List<User> list;
         UserDao userdao = factory.createUserDao();
         userdao.start();
-        List<User> list = userdao.findAll();
+        list = userdao.findAll();
         userdao.finish();
         return list;
     }
@@ -91,10 +112,13 @@ public class UserService {
         try {
             connection = DBManager.getConnection();
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR,e);
+            LOGGER.log(Level.ERROR, e);
         }
+        BigDecimal balance;
+
         UserDao userdao = factory.createUserDao(connection);
-        BigDecimal balance = userdao.getBalance(user);
+
+        balance = userdao.getBalance(user);
         userdao.finish();
         return balance;
     }
@@ -118,30 +142,35 @@ public class UserService {
         try {
             connection = DBManager.getConnection();
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR,e);
+            LOGGER.log(Level.ERROR, e);
         }
-        UserDao userDao = factory.createUserDao(connection);
-        boolean exists = userDao.emailExists(user.getEmail());
+        boolean exists;
 
+        UserDao userDao = factory.createUserDao(connection);
+
+        exists = userDao.emailExists(user.getEmail());
         if (exists) {
             return null;
         }
         String hashed = new PasswordManager().hashPassword(user.getPassword());
         user.setPassword(hashed);
         user = userDao.insert(user);
+        userDao.finish();
 
         return user;
     }
 
     public boolean userIsNotBanned(String email) {
+        boolean active = false;
+
         UserDao userdao = factory.createUserDao();
+
         userdao.start();
-        Status status=userdao.getUserStatus(email);
-        userdao.finish();
-        boolean active=false;
-        if(status!=Status.BANNED){
-            active= true;
+        Status status = userdao.getUserStatus(email);
+        if (status != Status.BANNED) {
+            active = true;
         }
+
 
         return active;
     }

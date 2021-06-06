@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,7 @@ public class MagazineServiceTest {
         Magazine magazine=new Magazine.Builder()
                 .setId(5)
                 .setName("Discovery").build();
-        when(factory.createMagazineDao()).thenReturn(new JDBCMagazineDao());
+        //when(factory.createMagazineDao()).thenReturn(new JDBCMagazineDao());
         when(magazineDao.find(magazine.getId())).thenReturn(Optional.of(magazine));
         Optional<Magazine> actual=magazineService.find(magazine.getId());
         assertEquals(magazine,actual.get());
@@ -66,7 +67,14 @@ public class MagazineServiceTest {
         int actual = magazineService.countAll();
         assertEquals(expectedNumberOfPeriodicals, actual);
     }
-
+@Test
+public void deleteShouldReturnFalseIfEmpty(){
+    Magazine magazine=new Magazine();
+    User user=new User();
+    when(magazineDao.delete(magazine,user)).thenReturn(null);
+    boolean result=magazineService.delete(magazine,user);
+    assertFalse(result);
+}
     @Test
     public void delete() {
         Magazine magazine=new Magazine();
@@ -98,6 +106,23 @@ public class MagazineServiceTest {
     }
 
     @Test
+    public void addMagazineShouldReturnFalseIFNull(){
+        Category finance=new Category();
+        finance.setName("Finance");
+        MagazineCreationInput input=new MagazineCreationInput.Builder()
+                .setName("Forbes")
+                .setPublisher("Forbs.Inc")
+                .setCategory(finance)
+                .setPrice("45")
+                .setDescription("Descr")
+                .build();
+        Magazine magazine=new Magazine();
+        magazine.setName("Forbes");
+        when(magazineDao.insert(any())).thenReturn(null);
+        boolean result=magazineService.addMagazine(input);
+        assertFalse(result);
+    }
+    @Test
     public void addMagazine() {
         Category finance=new Category();
         finance.setName("Finance");
@@ -111,7 +136,7 @@ public class MagazineServiceTest {
         Magazine magazine=new Magazine();
         magazine.setName("Forbes");
         when(magazineDao.insert(any())).thenReturn(magazine);
-        //when(magazineService.buildMagazine(input)).thenReturn(magazine);
+       // when(magazineService.buildMagazine(input)).thenReturn(magazine);
         boolean status=magazineService.addMagazine(input);
     assertTrue(status);
     }
@@ -133,7 +158,46 @@ public class MagazineServiceTest {
     }
 
     @Test
-    public void updateMagazine() {
+    public void updateMagazineShouldReturnTrueIfPresent() {
+        Category finance=new Category();
+        finance.setName("Finance");
+        MagazineCreationInput input=new MagazineCreationInput.Builder()
+                .setName("Forbes")
+                .setPublisher("Forbs.Inc")
+                .setCategory(finance)
+                .setPrice("45")
+                .setDescription("Descr")
+                .build();
+        Magazine magazine=new Magazine.Builder().setName("Forbes")
+                .setPublisher("Forbs.Inc")
+                .setCategory(finance)
+                .setPrice(new BigDecimal("45"))
+                .setDescription("Descr")
+                .build();
 
+        when(magazineDao.update(any())).thenReturn(magazine);
+        boolean result=magazineService.updateMagazine(input);
+        assertTrue(result);
+    }
+    @Test
+    public void updateMagazineShouldReturnFalseIsEmpty(){
+        Category finance=new Category();
+        finance.setName("Finance");
+        MagazineCreationInput input=new MagazineCreationInput.Builder()
+                .setName("Forbes")
+                .setPublisher("Forbs.Inc")
+                .setCategory(finance)
+                .setPrice("45")
+                .setDescription("Descr")
+                .build();
+        Magazine magazine=new Magazine.Builder().setName("Forbes")
+                .setPublisher("Forbs.Inc")
+                .setCategory(finance)
+                .setPrice(new BigDecimal("45"))
+                .setDescription("Descr")
+                .build();
+        when(magazineDao.update(any())).thenReturn(null);
+        boolean result=magazineService.updateMagazine(input);
+        assertFalse(result);
     }
 }

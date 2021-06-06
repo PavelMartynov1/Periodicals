@@ -19,8 +19,9 @@ public class JDBCCategoryDao implements CategoryDao {
     private static final String FIND_BY_ID = "select category_id,category_name,category_description from categories where category_id=?;";
     private Connection connection;
     private static final Logger LOGGER = LogManager.getLogger();
-
-    JDBCCategoryDao(Connection connection) {
+    public JDBCCategoryDao() {
+    }
+    public JDBCCategoryDao(Connection connection) {
         this.connection = connection;
     }
 
@@ -71,7 +72,7 @@ public class JDBCCategoryDao implements CategoryDao {
             }
         } catch (SQLException e) {
            LOGGER.error(e);
-        }  finally {
+        }finally {
             DBManager.closeConnection(connection);
         }
         return list;
@@ -113,4 +114,6 @@ public class JDBCCategoryDao implements CategoryDao {
     public void finish(){
         DBManager.closeConnection(connection);
     }
+
+
 }

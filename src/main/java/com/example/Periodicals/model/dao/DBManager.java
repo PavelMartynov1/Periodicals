@@ -29,6 +29,7 @@ public class DBManager {
                 LOGGER.log(Level.ERROR,e.getMessage());
             }
         }
+        System.out.println("Gave new connection");
         return ds.getConnection();
     }
 
@@ -36,6 +37,7 @@ public class DBManager {
         if(con != null) {
             try {
                 con.close();
+                System.out.println("Closed Connection");
             } catch (SQLException e) {
                 LOGGER.log(Level.ERROR,e);
                 throw new RuntimeException(e.getMessage());
